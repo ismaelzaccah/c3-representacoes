@@ -1,0 +1,401 @@
+<div id="c3-prototype">
+  <div class="c3-preview">
+    <div><strong>PROPOSTO</strong><span>Estudo de telas · dados fictícios</span></div>
+    <label>Visualizar perfil<select id="c3-profile"><option value="promotor">Promotor</option><option value="escritorio">Escritório</option><option value="master">Master</option></select></label>
+    <label id="c3-position-control">Cenário de posição<select id="c3-position"><option value="atual">Atual · 2 minutos</option><option value="antiga">Antiga · 6 minutos</option><option value="erro">API indisponível</option></select></label>
+  </div>
+  <div class="c3-product" aria-label="Protótipo da plataforma C3">
+    <header class="c3-header"><div class="c3-brand">C3<span>Operação comercial</span></div><div class="c3-identity"><span id="c3-user"></span><button type="button" data-action="login">Acesso</button></div></header>
+    <div class="c3-layout"><nav id="c3-navigation" aria-label="Navegação do perfil"></nav><main id="c3-main"></main></div>
+    <div id="c3-feedback" role="status" aria-live="polite"></div>
+    <footer class="c3-footer">Demonstração local · ESF-C3-0.1 revisão 1 · UX-C3-0.1</footer>
+  </div>
+</div>
+<style>
+  #c3-prototype { color-scheme:light dark; font-family:Inter,Arial,sans-serif; font-size:14px; color:light-dark(#17263b,#eaf0f8); --c3-accent:#305bce; --c3-radius:12px; --c3-bg:light-dark(#f5f7fb,#111a29); --c3-panel:light-dark(#ffffff,#1b283c); --c3-line:light-dark(#d9e1ed,#3a4a60); --c3-muted:light-dark(#56677d,#b7c6d9); --c3-soft:light-dark(#eaf0ff,#233a66); }
+  #c3-prototype * { box-sizing:border-box; }
+  #c3-prototype .c3-preview { display:flex; gap:14px; flex-wrap:wrap; align-items:end; margin-bottom:16px; }
+  #c3-prototype .c3-preview>div { flex:1 1 200px; display:grid; gap:5px; }
+  #c3-prototype .c3-preview strong { font-size:12px; letter-spacing:.12em; color:var(--c3-muted); }
+  #c3-prototype .c3-preview span { color:var(--c3-muted); }
+  #c3-prototype label { display:grid; gap:6px; font-size:13px; font-weight:600; min-width:0; }
+  #c3-prototype input, #c3-prototype select, #c3-prototype textarea { font:inherit; color:inherit; background:var(--c3-panel); border:1px solid var(--c3-line); border-radius:8px; padding:10px 12px; min-height:44px; width:100%; max-width:100%; }
+  #c3-prototype textarea { min-height:88px; resize:vertical; }
+  #c3-prototype button { font:inherit; font-weight:600; color:inherit; background:var(--c3-panel); border:1px solid var(--c3-line); border-radius:8px; padding:10px 14px; min-height:44px; white-space:normal; }
+  #c3-prototype button:focus-visible, #c3-prototype input:focus-visible, #c3-prototype select:focus-visible, #c3-prototype textarea:focus-visible { outline:3px solid var(--c3-accent); outline-offset:3px; }
+  #c3-prototype button:disabled { opacity:.55; cursor:not-allowed; }
+  #c3-prototype .c3-primary { background:var(--c3-accent); color:#fff; border-color:var(--c3-accent); }
+  #c3-prototype .c3-product { background:var(--c3-bg); border:1px solid var(--c3-line); border-radius:var(--c3-radius); overflow:hidden; }
+  #c3-prototype .c3-header { display:flex; justify-content:space-between; gap:16px; align-items:center; padding:20px 24px; background:var(--c3-panel); border-bottom:1px solid var(--c3-line); }
+  #c3-prototype .c3-brand { font-size:26px; font-weight:750; letter-spacing:-1px; display:flex; gap:14px; align-items:center; }
+  #c3-prototype .c3-brand span { font-size:13px; font-weight:500; letter-spacing:0; color:var(--c3-muted); max-width:100px; }
+  #c3-prototype .c3-identity { display:flex; gap:12px; align-items:center; font-size:13px; }
+  #c3-prototype .c3-layout { display:grid; grid-template-columns:178px minmax(0,1fr); min-height:550px; }
+  #c3-prototype nav { background:var(--c3-panel); padding:18px 12px; border-right:1px solid var(--c3-line); display:flex; flex-direction:column; gap:6px; align-items:stretch; }
+  #c3-prototype nav button { text-align:left; border-color:transparent; font-weight:500; }
+  #c3-prototype nav button[aria-current="page"] { background:var(--c3-soft); color:light-dark(#234cae,#d6e3ff); font-weight:700; }
+  #c3-prototype main { padding:24px; min-width:0; }
+  #c3-prototype h1 { margin:0; font-size:25px; line-height:1.2; letter-spacing:-.6px; }
+  #c3-prototype h2 { font-size:17px; margin:0 0 12px; }
+  #c3-prototype h3 { font-size:15px; margin:0 0 8px; }
+  #c3-prototype p { margin:6px 0 16px; line-height:1.55; }
+  #c3-prototype .c3-muted { color:var(--c3-muted); }
+  #c3-prototype .c3-heading { display:flex; gap:12px; align-items:start; justify-content:space-between; flex-wrap:wrap; margin-bottom:22px; }
+  #c3-prototype .c3-heading p { margin-bottom:0; }
+  #c3-prototype .c3-stack { display:grid; gap:14px; }
+  #c3-prototype .c3-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  #c3-prototype .c3-card { padding:18px; border:1px solid var(--c3-line); border-radius:var(--c3-radius); background:var(--c3-panel); min-width:0; }
+  #c3-prototype .c3-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  #c3-prototype .c3-row-between { justify-content:space-between; }
+  #c3-prototype .c3-card p:last-child { margin-bottom:0; }
+  #c3-prototype .c3-pill { display:inline-flex; padding:5px 9px; border-radius:6px; background:var(--c3-soft); color:light-dark(#234cae,#d6e3ff); font-size:12px; font-weight:600; }
+  #c3-prototype .c3-warning { background:light-dark(#fff3db,#3a2d1c); color:light-dark(#765012,#f5d9a0); border:1px solid light-dark(#e9cb8e,#755d36); padding:14px; border-radius:10px; line-height:1.5; }
+  #c3-prototype .c3-value { font-size:27px; font-weight:700; display:block; margin-top:8px; font-variant-numeric:tabular-nums; }
+  #c3-prototype .c3-table-wrap { overflow:auto; max-width:100%; }
+  #c3-prototype table { border-collapse:collapse; width:100%; font-size:13px; }
+  #c3-prototype th, #c3-prototype td { text-align:left; padding:12px 9px; border-bottom:1px solid var(--c3-line); line-height:1.4; }
+  #c3-prototype th { color:var(--c3-muted); font-weight:600; }
+  #c3-prototype td:first-child { padding-left:0; }
+  #c3-prototype .c3-number { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  #c3-prototype .c3-detail { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:14px; }
+  #c3-prototype .c3-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+  #c3-prototype .c3-form { display:grid; gap:14px; }
+  #c3-prototype .c3-notice { border-left:3px solid var(--c3-accent); padding:12px 14px; background:var(--c3-soft); border-radius:0 8px 8px 0; line-height:1.5; }
+  #c3-prototype .c3-check { display:flex; align-items:center; gap:9px; font-weight:400; min-height:44px; }
+  #c3-prototype .c3-check input { width:20px; min-height:20px; height:20px; flex:none; }
+  #c3-prototype .c3-folder { background:var(--c3-soft); border-radius:10px; padding:26px; min-height:180px; display:grid; align-content:center; gap:10px; }
+  #c3-prototype .c3-folder strong { font-size:26px; }
+  #c3-prototype .c3-footer { padding:12px 24px; border-top:1px solid var(--c3-line); background:var(--c3-panel); color:var(--c3-muted); font-size:12px; }
+  #c3-prototype #c3-feedback:not(:empty) { margin:0 24px 18px; border-radius:8px; padding:12px 14px; background:var(--c3-soft); line-height:1.45; }
+  #c3-prototype .c3-error { color:light-dark(#9e2525,#ffb2b2); }
+  #c3-prototype .c3-spaced { margin-top:16px; }
+  #c3-prototype .c3-back { margin-bottom:18px; }
+  #c3-prototype [hidden] { display:none !important; }
+  @media(max-width:700px) {
+    #c3-prototype .c3-layout { grid-template-columns:minmax(0,1fr); }
+    #c3-prototype nav { flex-direction:row; flex-wrap:wrap; border-right:0; border-bottom:1px solid var(--c3-line); padding:10px; gap:4px; }
+    #c3-prototype nav button { padding:8px 10px; font-size:13px; }
+    #c3-prototype .c3-grid, #c3-prototype .c3-detail { grid-template-columns:minmax(0,1fr); }
+    #c3-prototype main { padding:18px 14px; }
+    #c3-prototype .c3-header { padding:16px 14px; gap:8px; }
+    #c3-prototype .c3-brand { gap:9px; }
+    #c3-prototype .c3-brand span { max-width:78px; font-size:12px; }
+    #c3-prototype .c3-identity { flex-direction:column; gap:4px; align-items:end; }
+    #c3-prototype .c3-preview { gap:10px; }
+    #c3-prototype .c3-preview label { flex:1 1 140px; }
+    #c3-prototype .c3-heading { margin-bottom:18px; }
+    #c3-prototype h1 { font-size:23px; }
+    #c3-prototype .c3-card { padding:15px; }
+    #c3-prototype input, #c3-prototype textarea, #c3-prototype select { font-size:16px; }
+  }
+</style>
+<script>
+(() => {
+  const root = document.getElementById('c3-prototype');
+  const main = root.querySelector('#c3-main');
+  const navigation = root.querySelector('#c3-navigation');
+  const feedback = root.querySelector('#c3-feedback');
+  const state = {
+    profile: 'promotor', view: 'clientes', selectedClient: null, position: 'atual',
+    visit: null, visits: [], form: null, employeeActive: true,
+    order: { version: 2, quantity: 7, customer: 'Aprovada', evidence: true, reviewed: false, authorized: false, sent: false, result: 'Pendente', history: ['v1 · Substituída após alteração do cliente'] },
+    campaign: { decision: 'Aprovada', folder: true, cancelled: false },
+    fuel: [{ id: 'AB-001', date: '2026-11-09', odometer: 1200, liters: 30, total: 180, corrected: false }]
+  };
+  const clients = [
+    { id: 'CL-001', name: 'Autopeças Horizonte', city: 'Fortaleza · CE', address: 'Endereço de demonstração, 100', notice: 'Conferir disponibilidade do responsável antes da apresentação da campanha.' },
+    { id: 'CL-002', name: 'Comercial Via Norte', city: 'Fortaleza · CE', address: 'Endereço de demonstração, 200', notice: '' },
+    { id: 'CL-003', name: 'Peças Rota Sul', city: 'Caucaia · CE', address: 'Endereço de demonstração, 300', notice: '' }
+  ];
+  const menus = {
+    promotor: [['clientes', 'Clientes'], ['visitas', 'Minhas visitas'], ['combustivel', 'Combustível']],
+    escritorio: [['painel', 'Visão geral'], ['pedidos', 'Pedidos'], ['campanhas', 'Campanhas'], ['visitas', 'Visitas'], ['combustivel', 'Combustível'], ['cadastros', 'Cadastros'], ['compras', 'Compras']],
+    master: [['contas', 'Funcionários'], ['vinculos', 'Veículos por promotor'], ['correcoes', 'Correções'], ['painel', 'Visão geral']]
+  };
+  function escapeText(value) {
+    return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+  }
+  function number(value, decimals = 2) {
+    return Number(value).toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  }
+  function heading(title, subtitle, action = '') {
+    return `<div class="c3-heading"><div><h1>${escapeText(title)}</h1><p class="c3-muted">${escapeText(subtitle)}</p></div>${action}</div>`;
+  }
+  function button(label, action, primary = false, disabled = false) {
+    return `<button type="button" data-action="${action}" class="${primary ? 'c3-primary' : ''}" ${disabled ? 'disabled' : ''}>${label}</button>`;
+  }
+  function message(text, error = false) {
+    feedback.classList.toggle('c3-error', error);
+    feedback.textContent = text;
+  }
+  function persistNavigation() {
+    const snapshot = { profile: state.profile, view: state.view };
+    if (window.openai?.setWidgetState) {
+      window.openai.setWidgetState({ modelContent: { perfil: state.profile, tela: state.view }, privateContent: snapshot }).catch(() => {});
+    }
+  }
+  function setView(view) {
+    state.view = view;
+    state.form = null;
+    message('');
+    render();
+    persistNavigation();
+  }
+  function clientPage() {
+    if (state.selectedClient) return clientDetail();
+    return heading('Clientes', 'Todos os clientes cadastrados estão disponíveis para visita.') +
+      `<label>Buscar cliente<input id="c3-client-search" type="search" placeholder="Nome do estabelecimento"></label><div class="c3-stack c3-spaced" id="c3-client-list">` +
+      clients.map(client => `<article class="c3-card" data-client-name="${escapeText(client.name.toLowerCase())}"><div class="c3-row c3-row-between"><div><h2>${escapeText(client.name)}</h2><span class="c3-muted">${escapeText(client.city)}</span></div><button type="button" data-action="client" data-id="${client.id}">Ver cliente</button></div></article>`).join('') + '</div>';
+  }
+  function clientDetail() {
+    const client = clients.find(item => item.id === state.selectedClient);
+    const hasVisit = state.visit?.clientId === client.id;
+    const otherVisit = state.visit && !hasVisit;
+    const activeCampaign = client.id === 'CL-001' && state.campaign.decision === 'Aprovada' && state.campaign.folder && !state.campaign.cancelled;
+    let visitContent = `<p class="c3-muted">Veículo exclusivo · ABC1D23</p>`;
+    if (otherVisit) {
+      visitContent += `<div class="c3-warning">Há uma visita aberta em outro cliente. Encerre essa visita para iniciar uma nova.</div>${button('Abrir visita em andamento', 'open-visit')}`;
+    } else {
+      const positionLabel = { atual: 'Posição do veículo atual · há 2 minutos', antiga: 'Posição do veículo antiga · há 6 minutos', erro: 'API do rastreador indisponível' }[state.position];
+      visitContent += `<div class="${state.position === 'atual' ? 'c3-notice' : 'c3-warning'}">${positionLabel}</div>`;
+      if (hasVisit) visitContent += '<p class="c3-spaced"><span class="c3-pill">Visita em andamento</span> · início simulado às 10h</p>';
+      visitContent += `<form id="c3-visit-form" class="c3-form c3-spaced"><label>Motivo da visita<select name="reason"><option>Relacionamento comercial</option><option>Apresentação de campanha</option><option>Outro</option></select></label><label>Observações<textarea name="notes" maxlength="2000">${escapeText(state.visit?.notes || '')}</textarea></label>`;
+      if (state.position !== 'atual') visitContent += '<label>Justificativa da exceção<textarea name="justification" required minlength="10" placeholder="Informe o motivo para conferência"></textarea></label>';
+      visitContent += `<div class="c3-actions"><button class="c3-primary" type="submit">${hasVisit ? 'Encerrar visita' : 'Iniciar visita'}</button>${hasVisit ? button('Salvar observações', 'save-notes') : ''}</div></form>`;
+    }
+    return `${button('Voltar aos clientes', 'clients-back')}` + heading(client.name, client.address) +
+      `<div class="c3-stack"><section class="c3-card"><h2>Sua visita</h2>${visitContent}</section>` +
+      `<section class="c3-card"><h2>Campanhas e avisos</h2>${client.notice ? `<div class="c3-notice">${client.notice}</div>` : '<p class="c3-muted">Nenhum aviso vigente para este cliente.</p>'}` +
+      `${activeCampaign ? `<div class="c3-spaced"><span class="c3-pill">Campanha ativa</span><h3 class="c3-spaced">Wega · Campanha de novembro</h3><p>Vigência de demonstração de 01 a 30/11/2026.</p>${button('Ver folder', 'folder')}</div>` : '<p class="c3-muted c3-spaced">Nenhuma campanha ativa disponível.</p>'}${button('Solicitar campanha', 'request-campaign')}</section>` +
+      '<section class="c3-card"><h2>Compras do cliente</h2><p class="c3-muted">Base de compras ainda indisponível.</p><p>Valor no período e última compra serão apresentados após a publicação da planilha homologada.</p></section></div>';
+  }
+  function visitsPage() {
+    const rows = [...state.visits];
+    if (state.visit) rows.unshift({ ...state.visit, status: 'Aberta', time: '10h' });
+    return heading(state.profile === 'promotor' ? 'Minhas visitas' : 'Visitas', state.profile === 'promotor' ? 'Seu histórico de visitas, preservando a autoria.' : 'Acompanhamento administrativo dos registros da equipe.') +
+      `<div class="c3-card"><div class="c3-row"><label>Período<select><option>Novembro de 2026 · exemplo</option></select></label>${state.profile !== 'promotor' ? button('Prévia Excel', 'export-visits') : ''}</div>` +
+      (rows.length ? `<div class="c3-table-wrap c3-spaced"><table><thead><tr><th>Cliente</th><th>Promotor</th><th>Situação</th><th>Conferência</th></tr></thead><tbody>${rows.map(visit => `<tr><td>${escapeText(clients.find(client => client.id === visit.clientId).name)}</td><td>Alex · exemplo</td><td>${visit.status || 'Aberta'}</td><td>${visit.exception ? 'Necessária' : 'Posição atual'}</td></tr>`).join('')}</tbody></table></div>` : '<p class="c3-muted c3-spaced">Nenhuma visita registrada nesta demonstração. Inicie uma visita pela lista de clientes.</p>') + '</div>';
+  }
+  function dashboardPage() {
+    return heading('Visão geral', 'Acompanhamento da operação · novembro de 2026, dados fictícios') +
+      `<div class="c3-grid"><section class="c3-card"><span class="c3-muted">Visitas em andamento</span><strong class="c3-value">${state.visit ? 1 : 0}</strong></section><section class="c3-card"><span class="c3-muted">Visitas encerradas</span><strong class="c3-value">${state.visits.length}</strong></section></div>` +
+      `<section class="c3-card c3-spaced"><h2>Pedido em acompanhamento</h2><div class="c3-row c3-row-between"><div><h3>PD-001 · Autopeças Horizonte</h3><p class="c3-muted">Wega · versão ${state.order.version} · ${state.order.sent ? 'Envio registrado' : state.order.authorized ? 'Autorizada' : 'Aguardando revisão e autorização'}</p></div>${state.profile === 'escritorio' ? button('Abrir pedido', 'orders') : '<span class="c3-pill">Visão administrativa</span>'}</div></section>` +
+      '<section class="c3-card c3-spaced"><h2>Compras faturadas</h2><p class="c3-muted">Aguardando base homologada para apresentar os indicadores.</p></section>';
+  }
+  function ordersPage() {
+    const order = state.order;
+    const total = number(order.quantity * 12345 / 1000, 3);
+    return heading('Pedido PD-001', 'Autopeças Horizonte · Wega · recebido por WhatsApp') +
+      `<div class="c3-row"><span class="c3-pill">Versão ${order.version}</span><span class="c3-muted">Tabela Wega · fonte de demonstração</span></div><div class="c3-detail c3-spaced"><section class="c3-card"><h2>Cotação</h2>` +
+      `<div class="c3-table-wrap"><table><thead><tr><th>Produto</th><th>QTD</th><th>UNIT</th><th>TOTAL</th><th>Mínimo</th></tr></thead><tbody><tr><td>DEMO-W001<br>Grupo de demonstração</td><td class="c3-number">${order.quantity}</td><td class="c3-number">12,345</td><td class="c3-number">${total}</td><td class="c3-number">6</td></tr></tbody></table></div><p class="c3-spaced">Total da versão <strong>R$ ${total}</strong></p>` +
+      `<div class="c3-actions">${button('Prévia da cotação PDF', 'quote-preview')}${button('Alterar e criar versão', 'new-version', false, order.sent)}</div><h3 class="c3-spaced">Histórico</h3><p class="c3-muted">${order.history.map(escapeText).join('<br>')}</p></section>` +
+      `<section class="c3-card"><h2>Decisões desta versão</h2><div class="c3-stack"><div><h3>Resposta do cliente</h3><span class="c3-pill">${order.customer}</span><p class="c3-muted">${order.evidence ? 'Mensagem fictícia vinculada a esta versão.' : 'Aguardando resposta e evidência.'}</p></div>` +
+      `<div><h3>Revisão interna</h3><p>${order.reviewed ? 'Liberada · Escritório, exemplo' : 'Pendente'}</p></div><div><h3>Autorização</h3><p>${order.authorized ? 'Autorizada · Escritório, exemplo' : 'Pendente'}</p></div><div><h3>Envio ao fornecedor</h3><p>${order.sent ? 'Lançamento externo informado pelo operador.' : 'Aguardando autorização e lançamento manual.'}</p></div></div>` +
+      `<div class="c3-actions">${button('Registrar resposta', 'customer-response', false, order.sent)}${button('Liberar revisão', 'review', false, order.customer !== 'Aprovada' || order.reviewed)}${button('Autorizar versão', 'authorize', true, !order.reviewed || order.authorized)}${button('Registrar envio manual', 'send', false, !order.authorized || order.sent)}</div>` +
+      `${order.sent ? `<p class="c3-spaced">Resultado externo · ${order.result}</p>${button('Registrar resultado', 'external-result')}` : ''}</section></div>${state.form === 'version' ? versionForm() : ''}${state.form === 'response' ? responseForm() : ''}`;
+  }
+  function versionForm() {
+    return `<section class="c3-card c3-spaced"><h2>Nova versão</h2><form id="c3-version-form" class="c3-form"><label>Quantidade<input name="quantity" type="number" min="6" step="1" required value="${state.order.quantity}"></label><label>Motivo da alteração<textarea name="reason" required minlength="10"></textarea></label><div class="c3-actions"><button class="c3-primary" type="submit">Criar nova versão</button>${button('Cancelar', 'cancel-form')}</div></form></section>`;
+  }
+  function responseForm() {
+    return '<section class="c3-card c3-spaced"><h2>Resposta do cliente</h2><form id="c3-response-form" class="c3-form"><label>Decisão<select name="decision"><option>Aprovada</option><option>Alteração solicitada</option><option>Rejeitada</option></select></label><label>Motivo ou observação<textarea name="reason" required minlength="10"></textarea></label><label class="c3-check"><input type="checkbox" name="evidence" required><span>Vincular evidência fictícia desta demonstração</span></label><label>Encaminhamento na rejeição<select name="next"><option>Revisar</option><option>Encerrar</option></select></label><button class="c3-primary" type="submit">Registrar decisão nesta versão</button></form></section>';
+  }
+  function campaignsPage() {
+    const campaign = state.campaign;
+    const active = campaign.decision === 'Aprovada' && campaign.folder && !campaign.cancelled;
+    return heading('Campanhas', 'Decisões externas, folders e clientes-alvo.') +
+      `<section class="c3-card"><div class="c3-row c3-row-between"><h2>Wega · Campanha de novembro</h2><span class="c3-pill">${campaign.cancelled ? 'Cancelada' : active ? 'Ativa' : campaign.decision}</span></div><p>Cliente-alvo · Autopeças Horizonte</p><p>Vigência de demonstração · 01 a 30/11/2026</p><p class="c3-muted">Folder · ${campaign.folder ? 'Exemplo disponível' : 'Aguardando anexo'}</p>` +
+      `<div class="c3-actions">${button('Ver folder', 'folder', false, !campaign.folder)}${button('Registrar decisão', 'campaign-decision')}${button(campaign.folder ? 'Ver histórico do folder' : 'Anexar folder de exemplo', 'campaign-folder')}${button('Cancelar campanha', 'campaign-cancel', false, campaign.cancelled)}</div></section>` +
+      '<section class="c3-card c3-spaced"><h2>Avisos por cliente</h2><p>Autopeças Horizonte · aviso vigente de demonstração.</p><p class="c3-muted">Conferir disponibilidade do responsável antes da apresentação da campanha.</p></section>' +
+      (state.form === 'campaign-decision' ? '<section class="c3-card c3-spaced"><h2>Decisão informada pelo fornecedor</h2><form id="c3-campaign-decision-form" class="c3-form"><label>Resposta<select name="decision"><option>Aprovada</option><option>Rejeitada</option></select></label><label>Observação ou motivo<textarea name="reason" required minlength="10"></textarea></label><button class="c3-primary" type="submit">Registrar decisão</button></form></section>' : '') +
+      (state.form === 'campaign-cancel' ? '<section class="c3-card c3-spaced"><h2>Cancelar campanha</h2><form id="c3-campaign-cancel-form" class="c3-form"><label>Motivo<textarea name="reason" required minlength="10"></textarea></label><button type="submit">Confirmar cancelamento</button></form></section>' : '');
+  }
+  function fuelPage() {
+    const total = state.fuel.reduce((sum, item) => sum + item.total, 0);
+    const liters = state.fuel.reduce((sum, item) => sum + item.liters, 0);
+    return heading('Combustível', state.profile === 'promotor' ? 'Seu veículo exclusivo · ABC1D23' : 'Consulta administrativa · veículo ABC1D23', button('Registrar abastecimento', 'fuel-new', true)) +
+      `<div class="c3-grid"><section class="c3-card"><span class="c3-muted">Litros no período</span><strong class="c3-value">${number(liters, 3)} L</strong></section><section class="c3-card"><span class="c3-muted">Valor no período</span><strong class="c3-value">R$ ${number(total)}</strong></section></div>` +
+      `<section class="c3-card c3-spaced"><h2>Histórico</h2><div class="c3-table-wrap"><table><thead><tr><th>Data</th><th>Hodômetro</th><th>Litros</th><th>Valor</th></tr></thead><tbody>${state.fuel.map(item => `<tr><td>${item.date.split('-').reverse().join('/')}${item.corrected ? '<br>Corrigido pelo Master' : ''}</td><td class="c3-number">${number(item.odometer, 0)} km</td><td class="c3-number">${number(item.liters, 3)}</td><td class="c3-number">${number(item.total)}</td></tr>`).join('')}</tbody></table></div>${state.profile !== 'promotor' ? `<div class="c3-actions">${button('Prévia Excel', 'export-fuel')}</div>` : ''}</section>` + (state.form === 'fuel' ? fuelForm() : '');
+  }
+  function fuelForm() {
+    return `<section class="c3-card c3-spaced"><h2>Novo abastecimento</h2><form id="c3-fuel-form" class="c3-form"><label>Veículo<select name="vehicle"><option>ABC1D23 · veículo de Alex</option></select></label><div class="c3-grid"><label>Data real<input type="date" name="date" value="2026-11-10" ${state.profile === 'promotor' ? 'min="2026-11-10" max="2026-11-10"' : 'max="2026-11-10"'} required></label><label>Hodômetro em km<input type="number" name="odometer" min="0" step="0.001" required></label><label>Litros<input type="number" name="liters" min="0.001" step="0.001" required></label><label>Valor total em R$<input type="number" name="total" min="0.01" step="0.01" required></label></div>${state.profile !== 'promotor' ? '<label>Justificativa se retroativo<textarea name="reason" minlength="10"></textarea></label>' : ''}<button class="c3-primary" type="submit">Salvar abastecimento na demonstração</button></form><p id="c3-fuel-error" class="c3-error" role="alert"></p></section>`;
+  }
+  function registrationPage() {
+    return heading('Cadastros', 'Clientes compartilhados, fornecedores e veículos.', button('Novo cliente', 'client-new', true)) +
+      `<div class="c3-stack">${clients.map(client => `<article class="c3-card"><div class="c3-row c3-row-between"><div><h2>${escapeText(client.name)}</h2><span class="c3-muted">${escapeText(client.city)} · ativo</span></div><span class="c3-pill">Todos os promotores</span></div></article>`).join('')}<section class="c3-card"><h2>Fornecedores e veículos</h2><p>Wega · fornecedor de exemplo</p><p>ABC1D23 · referência Upcar a confirmar</p><p class="c3-muted">Contas de funcionários e vínculos ficam sob gestão do Master.</p></section></div>` +
+      (state.form === 'client' ? '<section class="c3-card c3-spaced"><h2>Novo cliente</h2><form id="c3-client-form" class="c3-form"><label>Nome ou razão social<input name="name" required minlength="2"></label><label>CNPJ<input name="cnpj" required maxlength="18" placeholder="Identificação fictícia para revisão"></label><label>Endereço<input name="address" required></label><div class="c3-grid"><label>Cidade<input name="city" required></label><label>UF<select name="uf"><option>CE</option><option>RN</option><option>PI</option></select></label></div><p class="c3-muted">Campos complementares serão revisados com a C3. A validação cadastral completa pertence à implementação.</p><button type="submit" class="c3-primary">Incluir exemplo</button></form></section>' : '');
+  }
+  function purchasePage() {
+    return heading('Compras faturadas', 'Indicadores por cliente e fornecedor, com origem Excel.') +
+      '<section class="c3-card"><h2>Aguardando fonte homologada</h2><p>A C3 fornecerá a planilha de compras e o procedimento de atualização.</p><div class="c3-grid"><div><h3>Valor comprado no período</h3><p class="c3-muted">Indisponível</p></div><div><h3>Última compra</h3><p class="c3-muted">Indisponível</p></div></div><p class="c3-notice">A tabela de preços Wega é usada na cotação. Os indicadores de compras usam os registros de faturamento.</p></section>';
+  }
+  function accountsPage() {
+    return heading('Funcionários', 'Gestão reservada ao Master.') +
+      `<section class="c3-card"><h2>Alex · promotor de exemplo</h2><p>Situação · ${state.employeeActive ? 'Ativo' : 'Inativo'}</p><p>Veículo exclusivo · ABC1D23</p><div class="c3-actions">${button(state.employeeActive ? 'Desativar conta de exemplo' : 'Reativar conta de exemplo', 'toggle-account')}${button('Criar conta', 'employee-new', true)}</div><p class="c3-muted c3-spaced">A desativação conserva a autoria dos registros anteriores.</p></section>` +
+      (state.form === 'employee' ? '<section class="c3-card c3-spaced"><h2>Nova conta</h2><form id="c3-employee-form" class="c3-form"><label>Nome<input name="name" required></label><label>E-mail<input name="email" type="email" required placeholder="exemplo@empresa.invalid"></label><label>Perfil<select name="profile"><option>Promotor</option><option>Escritório</option></select></label><button class="c3-primary" type="submit">Simular criação</button></form></section>' : '');
+  }
+  function linksPage() {
+    return heading('Veículos por promotor', 'Um veículo fixo e exclusivo por promotor.') + '<section class="c3-card"><h2>Alex · ABC1D23</h2><p>Vínculo vigente de demonstração.</p><p class="c3-muted">Identificador Upcar aguardando relação da C3.</p><div class="c3-notice">Associar este veículo a outro promotor exige encerrar o vínculo anterior. O histórico permanece preservado.</div></section>';
+  }
+  function correctionsPage() {
+    return heading('Correções excepcionais', 'Alterações com justificativa e histórico preservado.') + '<section class="c3-card"><h2>Abastecimento AB-001</h2><p>ABC1D23 · 09/11/2026 · 30 litros · valor original R$ 180,00</p><form id="c3-correction-form" class="c3-form"><label>Valor corrigido em R$<input name="value" type="number" min="0.01" step="0.01" required value="180.00"></label><label>Justificativa<textarea name="reason" required minlength="10"></textarea></label><button type="submit" class="c3-primary">Registrar correção de exemplo</button></form></section>';
+  }
+  function folderPage() {
+    return heading('Folder da campanha', 'Wega · exemplo ilustrativo vinculado ao cliente.') + '<section class="c3-folder"><span>FOLDER FICTÍCIO</span><strong>Campanha de novembro</strong><span>Condições comerciais a conferir com o fornecedor.</span></section><div class="c3-actions">' + button('Voltar', 'folder-back') + '</div>';
+  }
+  function quotePreview() {
+    return heading('Cotação · prévia de conteúdo', `PD-001 · versão ${state.order.version} · dados fictícios`) + `<section class="c3-card"><h2>C3 · Autopeças Horizonte</h2><p>Fornecedor Wega · 10/11/2026, exemplo</p><div class="c3-table-wrap"><table><thead><tr><th>PRODUTO</th><th>QTD</th><th>UNIT</th><th>TOTAL</th><th>MULTI</th></tr></thead><tbody><tr><td>DEMO-W001 · Grupo de demonstração</td><td>${state.order.quantity}</td><td>12,345</td><td>${number(state.order.quantity * 12345 / 1000, 3)}</td><td>6</td></tr></tbody></table></div><p class="c3-muted c3-spaced">Conteúdo em revisão. A referência preenchida da C3 definirá o documento final.</p></section><div class="c3-actions">${button('Voltar ao pedido', 'orders')}</div>`;
+  }
+  function requestCampaignPage() {
+    return heading('Solicitar campanha', 'A solicitação ficará disponível ao Escritório.') + '<section class="c3-card"><form id="c3-request-campaign-form" class="c3-form"><label>Cliente<input readonly value="' + escapeText(clients.find(client => client.id === state.selectedClient)?.name || 'Autopeças Horizonte') + '"></label><label>Fornecedor<select><option>Wega</option></select></label><label>Título<input name="title" required minlength="3"></label><label>Descrição<textarea name="description" required></textarea></label><button class="c3-primary" type="submit">Registrar solicitação de exemplo</button></form></section>';
+  }
+  function loginPage() {
+    return heading('Acesso à C3', 'Estudo da tela de entrada.') + '<section class="c3-card"><form id="c3-login-form" class="c3-form"><label>E-mail<input type="email" value="usuario@empresa.invalid" readonly></label><label>Senha<input type="password" value="demonstracao" readonly></label><button type="submit" class="c3-primary">Entrar na demonstração</button></form><p class="c3-muted c3-spaced">Recuperação assistida pelo responsável Master, conforme procedimento a aprovar.</p></section>';
+  }
+  function render() {
+    const profileLabel = { promotor: 'Alex · Promotor', escritorio: 'Escritório · exemplo', master: 'Master · exemplo' }[state.profile];
+    root.querySelector('#c3-user').textContent = profileLabel;
+    root.querySelector('#c3-profile').value = state.profile;
+    root.querySelector('#c3-position-control').hidden = state.profile !== 'promotor';
+    navigation.innerHTML = menus[state.profile].map(([view, label]) => `<button type="button" data-action="navigate" data-view="${view}" ${state.view === view ? 'aria-current="page"' : ''}>${label}</button>`).join('');
+    const pages = { clientes: clientPage, visitas: visitsPage, painel: dashboardPage, pedidos: ordersPage, campanhas: campaignsPage, combustivel: fuelPage, cadastros: registrationPage, compras: purchasePage, contas: accountsPage, vinculos: linksPage, correcoes: correctionsPage, folder: folderPage, quote: quotePreview, request: requestCampaignPage, login: loginPage };
+    if (state.profile === 'promotor' && !state.employeeActive && state.view !== 'login') {
+      main.innerHTML = heading('Conta de exemplo desativada', 'Acesso operacional bloqueado nesta simulação.') + '<div class="c3-warning">O histórico permanece preservado. O Master poderá reativar a conta.</div>';
+      return;
+    }
+    main.innerHTML = (pages[state.view] || clientPage)();
+  }
+  root.querySelector('#c3-profile').addEventListener('change', event => {
+    state.profile = event.target.value;
+    state.selectedClient = null;
+    setView(menus[state.profile][0][0]);
+  });
+  root.querySelector('#c3-position').addEventListener('change', event => {
+    state.position = event.target.value;
+    render();
+  });
+  root.addEventListener('input', event => {
+    if (event.target.id !== 'c3-client-search') return;
+    const query = event.target.value.toLocaleLowerCase('pt-BR');
+    root.querySelectorAll('[data-client-name]').forEach(element => { element.hidden = !element.dataset.clientName.includes(query); });
+  });
+  root.addEventListener('click', event => {
+    const control = event.target.closest('button[data-action]');
+    if (!control || control.disabled) return;
+    const action = control.dataset.action;
+    if (action === 'navigate') { state.selectedClient = null; setView(control.dataset.view); }
+    else if (action === 'client') { state.selectedClient = control.dataset.id; setView('clientes'); }
+    else if (action === 'clients-back') { state.selectedClient = null; setView('clientes'); }
+    else if (action === 'open-visit') { state.selectedClient = state.visit.clientId; setView('clientes'); }
+    else if (action === 'login') setView('login');
+    else if (action === 'orders') setView('pedidos');
+    else if (action === 'folder') { state.returnView = state.view; setView('folder'); }
+    else if (action === 'folder-back') setView(state.returnView || 'clientes');
+    else if (action === 'quote-preview') setView('quote');
+    else if (action === 'request-campaign') setView('request');
+    else if (action === 'new-version') { state.form = 'version'; render(); }
+    else if (action === 'customer-response') { state.form = 'response'; render(); }
+    else if (action === 'cancel-form') { state.form = null; render(); }
+    else if (action === 'review') { state.order.reviewed = true; render(); message('Revisão liberada nesta demonstração para a versão atual.'); }
+    else if (action === 'authorize') { state.order.authorized = true; render(); message('Autorização simulada vinculada à versão atual. O mesmo usuário pode revisar e autorizar.'); }
+    else if (action === 'send') { state.order.sent = true; render(); message('Registro simulado do lançamento manual no fornecedor.'); }
+    else if (action === 'external-result') { state.order.result = 'Aceito pelo fornecedor · exemplo'; render(); message('Resultado de exemplo registrado. Compras faturadas continuam dependentes da fonte Excel.'); }
+    else if (action === 'campaign-decision') { state.form = 'campaign-decision'; render(); }
+    else if (action === 'campaign-cancel') { state.form = 'campaign-cancel'; render(); }
+    else if (action === 'campaign-folder') { state.campaign.folder = true; render(); message('Folder fictício vinculado. O histórico do anexo será preservado na implementação.'); }
+    else if (action === 'fuel-new') { state.form = 'fuel'; render(); }
+    else if (action === 'client-new') { state.form = 'client'; render(); }
+    else if (action === 'employee-new') { state.form = 'employee'; render(); }
+    else if (action === 'toggle-account') { state.employeeActive = !state.employeeActive; render(); message('Situação da conta de exemplo alterada. Registros anteriores foram preservados.'); }
+    else if (action === 'save-notes') {
+      const form = root.querySelector('#c3-visit-form');
+      state.visit.notes = new FormData(form).get('notes');
+      message('Observações da visita aberta atualizadas apenas nesta demonstração.');
+    } else if (action === 'export-visits') message('Prévia Excel de visitas · cliente, promotor, veículo, início, fim, situação, motivo e conferência. Mesmo recorte da consulta.');
+    else if (action === 'export-fuel') message('Prévia Excel de abastecimentos · veículo, data, autor, hodômetro, litros, valor e indicação de correção.');
+  });
+  root.addEventListener('submit', event => {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    if (form.id === 'c3-visit-form') {
+      const exception = state.position !== 'atual';
+      if (exception && String(data.get('justification') || '').trim().length < 10) { message('Informe ao menos dez caracteres na justificativa de conferência.', true); return; }
+      if (state.visit) {
+        state.visits.unshift({ ...state.visit, notes: data.get('notes'), status: 'Encerrada', exception: exception || state.visit.exception });
+        state.visit = null;
+        render();
+        message('Visita encerrada na demonstração. Os registros são fictícios.');
+      } else {
+        state.visit = { clientId: state.selectedClient, notes: data.get('notes'), reason: data.get('reason'), exception };
+        render();
+        message(exception ? 'Check-in simulado com justificativa e marcação para conferência.' : 'Check-in simulado. Visita em andamento.');
+      }
+    } else if (form.id === 'c3-version-form') {
+      state.order.history.push(`v${state.order.version} · Resposta do cliente ${state.order.customer.toLowerCase()} · ${state.order.authorized ? 'autorização preservada no histórico' : 'substituída'}`);
+      Object.assign(state.order, { version: state.order.version + 1, quantity: Number(data.get('quantity')), customer: 'Pendente', evidence: false, reviewed: false, authorized: false });
+      state.form = null;
+      render();
+      message('Nova versão criada na demonstração. Resposta, revisão e autorização precisam corresponder a esta versão.');
+    } else if (form.id === 'c3-response-form') {
+      state.order.customer = data.get('decision');
+      state.order.evidence = true;
+      state.order.reviewed = false;
+      state.order.authorized = false;
+      state.form = state.order.customer === 'Alteração solicitada' ? 'version' : null;
+      render();
+      message(state.order.customer === 'Rejeitada' ? `Rejeição de exemplo registrada. Encaminhamento escolhido · ${data.get('next')}.` : 'Resposta fictícia registrada para a versão atual.');
+    } else if (form.id === 'c3-campaign-decision-form') {
+      state.campaign.decision = data.get('decision');
+      state.form = null;
+      render();
+      message('Decisão externa de exemplo registrada com observação.');
+    } else if (form.id === 'c3-campaign-cancel-form') {
+      state.campaign.cancelled = true;
+      state.form = null;
+      render();
+      message('Campanha cancelada na demonstração, com motivo.');
+    } else if (form.id === 'c3-fuel-form') {
+      const date = data.get('date');
+      const odometer = Number(data.get('odometer'));
+      const previous = state.fuel.filter(item => item.date <= date).sort((a, b) => b.date.localeCompare(a.date) || b.odometer - a.odometer)[0];
+      const next = state.fuel.filter(item => item.date > date).sort((a, b) => a.date.localeCompare(b.date) || a.odometer - b.odometer)[0];
+      const error = root.querySelector('#c3-fuel-error');
+      if ((previous && odometer < previous.odometer) || (next && odometer > next.odometer)) { error.textContent = 'O hodômetro precisa ser coerente com os abastecimentos anteriores e posteriores.'; return; }
+      if (date < '2026-11-10' && String(data.get('reason') || '').trim().length < 10) { error.textContent = 'Justifique o lançamento retroativo com ao menos dez caracteres.'; return; }
+      state.fuel.push({ id: `AB-${state.fuel.length + 1}`, date, odometer, liters: Number(data.get('liters')), total: Number(data.get('total')), corrected: false });
+      state.form = null;
+      render();
+      message('Abastecimento adicionado aos dados fictícios desta demonstração.');
+    } else if (form.id === 'c3-client-form') {
+      clients.push({ id: `CL-${clients.length + 1}`, name: data.get('name'), city: `${data.get('city')} · ${data.get('uf')}`, address: data.get('address'), notice: '' });
+      state.form = null;
+      render();
+      message('Cliente fictício incluído para exploração da tela.');
+    } else if (form.id === 'c3-employee-form') { state.form = null; render(); message('Criação de conta ilustrada. Dados e credenciais não foram enviados.'); }
+    else if (form.id === 'c3-correction-form') {
+      state.fuel[0].total = Number(data.get('value'));
+      state.fuel[0].corrected = true;
+      message('Correção fictícia registrada com justificativa. Valor original R$ 180,00 preservado como referência nesta tela.');
+    } else if (form.id === 'c3-request-campaign-form') { setView('clientes'); message('Solicitação fictícia registrada para ilustrar o encaminhamento ao Escritório.'); }
+    else if (form.id === 'c3-login-form') setView(menus[state.profile][0][0]);
+  });
+  const saved = window.openai?.widgetState?.privateContent || window.openai?.widgetState || {};
+  if (menus[saved.profile]) {
+    state.profile = saved.profile;
+    state.view = menus[state.profile].some(([view]) => view === saved.view) ? saved.view : menus[state.profile][0][0];
+  }
+  render();
+  if (globalThis.Tweak) {
+    const design = { accent: '#305bce', radius: 12 };
+    const tweak = new Tweak({ container: root.querySelector('.c3-product'), onChange: () => {
+      root.style.setProperty('--c3-accent', design.accent);
+      root.style.setProperty('--c3-radius', `${design.radius}px`);
+    }});
+    tweak.addColorPicker(design, 'accent', { label: 'Cor principal', reference: '--c3-accent' });
+    tweak.addSlider(design, 'radius', { label: 'Cantos', min: 4, max: 18, unit: 'px' });
+  }
+})();
+</script>
+
+
